@@ -1,7 +1,9 @@
 from pathlib import Path
-
 from datasets import load_dataset
 
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DATA_DIR = PROJECT_ROOT / "data"
 
 def load_iwslt():
     """
@@ -29,4 +31,4 @@ if __name__ == "__main__":
     print(dataset)
     print(dataset["train"][0]) # type: ignore
 
-    save_dataset(dataset, "data/raw/iwslt")
+    save_dataset(dataset, str(DATA_DIR/"iwslt"))

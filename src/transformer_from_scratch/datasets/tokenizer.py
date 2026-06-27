@@ -3,7 +3,7 @@ from pathlib import Path
 from datasets import load_from_disk
 from typing import List, Union
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = PROJECT_ROOT / "data"
 MODEL_PREFIX = DATA_DIR / "tokenizer"/ "iwslt"
 MODEL_PATH = DATA_DIR / "tokenizer" / "iwslt.model"
@@ -98,11 +98,11 @@ def eos_id() -> int:
 def vocab_size() -> int:
     return load_tokenizer().vocab_size()
 
-def piece_to_id(piece: str):
+def piece_to_id(piece: str) -> int:
     return load_tokenizer().piece_to_id(piece)  # type: ignore
 
 
-def id_to_piece(idx: int):
+def id_to_piece(idx: int) -> int:
     return load_tokenizer().id_to_piece(idx) # type: ignore
 
 if __name__ == "__main__":
