@@ -1,0 +1,24 @@
+[project]
+name = "transformer-from-scratch"
+version = "0.1.0"
+description = "Reproducing the Attention Is All You Need paper from scratch using PyTorch."
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "tqdm",
+    "tokenizers",
+    "sentencepiece",
+    "sacrebleu",
+    "tensorboard",
+    "einops",
+    "jupyter",
+    "ipywidgets",
+    "datasets==3.6.0",
+]
