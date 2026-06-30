@@ -11,8 +11,6 @@ class ScaledDotProductAttention(nn.Module):
         super().__init__()
         self.softmax = nn.Softmax(dim=-1)
         
-        
-        
     def forward(self, Q, K, V, mask=None):
         dk = Q.shape[-1]
         scores = Q @ K.transpose(-2,-1)
