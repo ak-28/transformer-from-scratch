@@ -18,10 +18,17 @@ class MultiHeadAttention(nn.Module):
         self.W_o = nn.Linear(d_model, d_model, bias=False)
         self.attention = ScaledDotProductAttention()
         
-    def forward(self, x, mask=None):
-        Q = self.W_q(x)
-        K = self.W_k(x)
-        V = self.W_v(x)
+    def forward(self, query, key=None, value=None, mask=None):
+        
+        if key is None:
+            key = query
+            
+        if value is None:
+            value = query
+        
+        Q = self.W_q(query)
+        K = self.W_k(key)
+        V = self.W_v(value)
         B, S, _ = Q.shape
         Q = Q.view((B, S,  self.num_heads, self.d_k)).transpose(1,2)
         K = K.view((B, S,  self.num_heads, self.d_k)).transpose(1,2)
